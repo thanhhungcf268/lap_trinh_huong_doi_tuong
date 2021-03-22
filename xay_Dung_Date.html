@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="border:1px solid black;width: 300px;height: 400px">
+    <p id="12"></p>
+    </br>
+    <p id="13"></p>
+    </br>
+    <p id="14"></p>
+</div>
+</body>
+</html>
+<script>
+
+    var ad = function (day, month, year) {
+        this.day = document.getElementById("12").innerHTML = day;
+        this.month = document.getElementById("13").innerHTML = month;
+        this.year = document.getElementById("14").innerHTML = year;
+        this.getDay = function () {
+            return this.day;
+        }
+        this.getMonth = function () {
+            return this.month;
+        }
+        this.getYear = function () {
+            return this.year;
+        }
+        this.setDay = function (day) {
+            return this.day = day;
+        }
+        this.setMonth = function (month) {
+            return this.month = month;
+        }
+        this.setYear = function (year) {
+            return this.year = year;
+        }
+    }
+    var ad;
+    ad = new ad(12, 8, 1996)
+    var day = ad.getDay();
+    var month = ad.getMonth();
+    var year = ad.getYear();
+    console.log(day + "_" + month + "_" + year)
+    var da = ad.setDay(10);
+    var mo = ad.setMonth(10);
+    var ye = ad.setYear(2019);
+    console.log(da + "_" + mo + "_" + ye)
+</script>
