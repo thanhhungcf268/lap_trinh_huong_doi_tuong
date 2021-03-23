@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        input[type=text] {
+            width: 20px;
+        }
+
+        button {
+            width: 30px;
+            height: 30px;
+            color: red;
+        }
+
+        #play {
+            width: 80px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="row" name="row"> <a style="color: orange">row</a>
+<input type="text" id="column" name="column"> <a style="color: orange">column</a>
+<button id="play" onclick="playgame()">Play</button>
+<div id="main">
+
+</div>
+</body>
+</html>
+<script>
+    var array = [];
+
+    function render(row, column) {
+
+        for (let k = 0; k < row; k++) {
+            array[k] = [];
+            for (let l = 0; l < column; l++) {
+                array[k][l] = "";
+            }
+        }
+        var resume = "<table cellPadding='0' cellSpacing='0'>"
+        for (let i = 0; i < row; i++) {
+            resume += "<tr>"
+            for (let j = 0; j < column; j++) {
+
+                resume += "<td style='color: olivedrab;'>" + "<button onclick='play(this.id," + i + "," + j + ")' id='but" + i + "_" + j + "' ></button>" + "</td>";
+            }
+            resume += "</tr>";
+        }
+        resume += "</table>";
+        return resume;
+
+    }
+
+    function playgame() {
+        let rows = document.getElementById("row").value;
+        let columns = document.getElementById("column").value;
+        document.getElementById("main").innerHTML = render(rows, columns)
+    }
+
+    var cont = 2;
+
+    function play(id, i, j) {
+        if (array[i][j] === "") {
+            if (cont % 2 === 0) {
+                document.getElementById(id).innerHTML = "0";
+                cont++;
+
+            } else {
+                document.getElementById(id).innerHTML = "x";
+                cont++;
+            }
+        }
+        array[i][j] = document.getElementById(id).innerHTML
+        winx()
+    }
+
+    function winx() {
+        for (let i = 0; i < array.length; i++) {
+            for (let j = 0; j < array[i].length - 4; j++) {
+                if (array[i][j] === array[i][j + 1] && array[i][j] !== "") {
+                    if (array[i][j + 1] === array[i][j + 2]) {
+                        if (array[i][j + 2] === array[i][j + 3]) {
+                            if (array[i][j + 3] === array[i][j + 4]) {
+                                alert(array[i][j] + " win ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < array.length - 4; i++) {
+            for (let j = 0; j < array[i].length; j++) {
+                if (array[i][j] === array[i + 1][j] && array[i][j] !== "") {
+                    if (array[i + 1][j] === array[i + 2][j]) {
+                        if (array[i + 2][j] === array[i + 3][j]) {
+                            if (array[i + 3][j] === array[i + 4][j]) {
+                                alert(array[i][j] + " win ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        for (let i = 0; i < array.length - 4; i++) {
+            for (let j = 0; j < array[i].length - 4; j++) {
+                if (array[i][j] === array[i + 1][j + 1] && array[i][j] !== "") {
+                    if (array[i + 1][j + 1] === array[i + 2][j + 2]) {
+                        if (array[i + 2][j + 2] === array[i + 3][j + 3]) {
+                            if (array[i + 3][j + 3] === array[i + 4][j + 4]) {
+                                alert(array[i][j] + " win ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < array.length - 4; i++) {
+            for (let j = 4; j < array[i].length; j++) {
+                if (array[i][j] === array[i + 1][j - 1] && array[i][j] !== "") {
+                    if (array[i + 1][j - 1] === array[i + 2][j - 2]) {
+                        if (array[i + 2][j - 2] === array[i + 3][j - 3]) {
+                            if (array[i + 3][j - 3] === array[i + 4][j - 4]) {
+                                alert(array[i][j] + " win ")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+</script>
