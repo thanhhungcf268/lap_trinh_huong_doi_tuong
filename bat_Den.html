@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>[Bài tập] Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn</title>
+</head>
+<body>
+<div id="dientich"><img src="images/Den_Tat.jpg" style='width: 200px;height: 200px'></div>
+<button onclick="onClick()">Electriclamp</button>
+</body>
+</html>
+<script>
+    var img = [];
+    img[0] = ["<img src='images/Den_Bat.jpg' style='width: 200px;height: 200px'>"]
+    img[1] = ["<img src='images/Den_Tat.jpg' style='width: 200px;height: 200px'>"]
+
+    class Electriclamp {
+        status;
+
+        constructor() {
+            this.status = true;
+        }
+
+        turnOff() {
+            this.status = false;
+            document.getElementById("dientich").innerHTML = img[1]
+
+        }
+
+        turnOn() {
+            this.status = true;
+            document.getElementById("dientich").innerHTML = img[0]
+        }
+    }
+
+
+    class SwitchButton {
+        status;
+        lamp = elictriclemp;
+
+        constructor() {
+            this.status = true;
+        }
+
+        connectToLamp(electricLamp) {
+            this.lamp = electricLamp;
+        }
+
+        switchOff() {
+            this.status = false;
+            this.lamp.turnOff();
+
+        }
+
+        switchOn() {
+            this.status = true;
+            this.lamp.turnOn();
+
+        }
+
+    }
+
+
+    var elictriclemp = new Electriclamp();
+    var switchButton = new SwitchButton();
+    switchButton.connectToLamp(elictriclemp);
+
+    function onClick() {
+        if (switchButton.status === true) {
+            switchButton.switchOff();
+        } else {
+            switchButton.switchOn();
+        }
+    }
+</script>
