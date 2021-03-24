@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Phát triển ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva</title>
+</head>
+<body>
+<form>
+    <p id="check"></p></br>
+    <p id="check1"></p></br>
+    <p id="check2"></p></br>
+    <p id="check3"></p></br>
+    <button type="button" onclick="aDameat()">aDam ĂN !</button>
+    <button type="button" onclick="eVAeat()">eVa ĂN !</button>
+</form>
+</body>
+</html>
+<script>
+    class Human {
+        name;
+        gender;
+        weight;
+
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            return this.gender === 'male';
+        }
+
+        setGender(Boolean) {
+        }
+
+        checkApple(apple) {
+            return apple.weight > 0;
+
+        }
+
+        eat(a) {
+            if (a.weight > 0) {
+                a.weight--;
+                if (this.isMale()) {
+                    this.weight++;
+                } else {
+                    this.weight++;
+                    this.weight++;
+                }
+            }
+        }
+
+        say(message) {
+            return document.getElementById("check1").innerHTML = message;
+        }
+
+        getName() {
+            return this.name
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+    }
+
+    class Apple {
+        constructor(weight) {
+            this.weight = weight;
+        }
+
+        Apple() {
+        }
+
+        decrease() {
+
+        }
+
+        isEmpty() {
+            return this.weight > 0;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+    }
+
+    var apple = new Apple(10)
+    var aDam = new Human("aDAm", 'male', 60)
+    var eVA = new Human("eAa", 'female', 50)
+
+    function aDameat() {
+        aDam.eat(apple)
+        aDam.checkApple(apple)
+        aDam.say(" ăn táo thôi ")
+        aDam.setName("aDam")
+        document.getElementById("check3").innerHTML = "số táo còn lại là " + apple.getWeight()
+        document.getElementById("check2").innerHTML = aDam.getWeight()
+        if (aDam.checkApple(apple)) {
+            document.getElementById("check").innerHTML = aDam.getName()
+                + " " + "ăn tiếp đi"
+        } else
+            document.getElementById("check").innerHTML = aDam.getName()
+                + " " + "ăn hết táo rồi"
+    }
+
+    function eVAeat() {
+        eVA.eat(apple)
+        eVA.checkApple(apple)
+        eVA.say(" ăn táo thôi ")
+        eVA.setName("aDam")
+        document.getElementById("check3").innerHTML = "số táo còn lại là " + apple.getWeight()
+        document.getElementById("check2").innerHTML = eVA.getWeight()
+        if (eVA.checkApple(apple)) {
+            document.getElementById("check").innerHTML = eVA.getName()
+                + " " + "ăn tiếp đi"
+        } else
+            document.getElementById("check").innerHTML = eVA.getName()
+                + " " + "ăn hết táo rồi"
+    }
+</script>
